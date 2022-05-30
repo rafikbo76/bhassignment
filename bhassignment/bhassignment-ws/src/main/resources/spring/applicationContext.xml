@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"	
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd 
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx.xsd 
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context.xsd">
+		  
+	<context:component-scan base-package="com.cpgm.bh.bhassignment.*" />
+ 
+	<!-- ************ JPA configuration *********** -->
+	<tx:annotation-driven transaction-manager="transactionManager" />  
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceXmlLocation" value="classpath:config/persistence-demo.xml" />
+        <property name="persistenceUnitName" value="bhassignmentPersistence" />        
+        <property name="dataSource" ref="restBhAssignmentDS" />
+        <property name="packagesToScan" value="com.cpgm.bh.bhassignment.jpa" />
+
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+               <property name="showSql" value="true" />
+               <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect"/>
+            </bean>
+        </property>
+    </bean>     
+        	
+	<bean id="customerDao" class="com.cpgm.bh.bhassignment.ws.rest.dao.CustomerDaoJpa2Impl"/>
+    <bean id="customerService" class="com.cpgm.bh.bhassignment.ws.rest.service.CustomerServiceImpl" />	
+    
+	<bean id="securityDao" class="com.cpgm.bh.bhassignment.ws.rest.dao.SecurityDaoJpa2Impl"/>
+    <bean id="securityService" class="com.cpgm.bh.bhassignment.ws.rest.service.SecurityServiceImpl" />	
+    
+	<bean id="accountDao" class="com.cpgm.bh.bhassignment.ws.rest.dao.AccountDaoJpa2Impl"/>
+    <bean id="accountService" class="com.cpgm.bh.bhassignment.ws.rest.service.AccountServiceImpl" />	
+    
+	<bean id="commonDao" class="com.cpgm.bh.bhassignment.ws.rest.dao.CommonDaoJpa2Impl"/>
+<!--     <bean id="commonService" class="com.cpgm.bh.bhassignment.ws.rest.service.CommonServiceImpl" />	 -->
+    
+	<bean id="restBhAssignmentDS" class="org.springframework.jndi.JndiObjectFactoryBean" scope="singleton">
+	    <property name="jndiName" value="java:comp/env/jdbc/bhassignmentDB" />
+	    <property name="resourceRef" value="true" />
+	</bean>
+
+</beans>

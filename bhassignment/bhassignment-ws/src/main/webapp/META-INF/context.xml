@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <Context>
+    <Resource
+    name="jdbc/bhassignmentDB"
+    type="javax.sql.DataSource"
+    maxActive="100"
+    driverClassName="org.h2.Driver"
+	url="jdbc:h2:mem:testdb"
+    username="sa"
+    password="password"    
+	/>
+<!--     url="jdbc:sqlserver://localhost:1433;databaseName=petrolpaydb" -->
+
+    <ResourceLink global="jdbc/bhassignmentDB" name="jdbc/bhassignmentDB" type="javax.sql.DataSource" />
+    
+<!--     <Valve className="org.apache.catalina.valves.AccessLogValve" directory="$CATALINA_HOME/logs/" prefix="access_log"  -->
+<!--     		fileDateFormat="yyyy-MM-dd.HH" suffix=".log" pattern="%t %H cookie:%{SESSIONID}c request:%{SESSIONID}r %m %U %s %q %r" /> -->
+</Context>

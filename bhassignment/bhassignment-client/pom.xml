@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.cpgm.bh.bhassignment</groupId>
+    <artifactId>bhassignment</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>bhassignment-client</artifactId>
+  <name>Customer Accounts Client</name>
+  
+  <dependencies>
+  	<dependency>
+		<groupId>com.cpgm.bh.bhassignment</groupId>
+		<artifactId>bhassignment-jpa</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+  	<dependency>
+		<groupId>com.sun.jersey</groupId>
+		<artifactId>jersey-client</artifactId>
+		<version>1.19.4</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.sun.jersey</groupId>
+		<artifactId>jersey-json</artifactId>
+		<version>1.19.4</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.sun.jersey.contribs</groupId>
+		<artifactId>jersey-apache-client4</artifactId>
+		<version>1.19.4</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.sun.jersey.contribs</groupId>
+		<artifactId>jersey-multipart</artifactId>
+		<version>1.19.4</version>
+	</dependency>
+	
+	<!-- Apache commonio -->
+	<dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>2.11.0</version>
+	</dependency>
+  </dependencies>
+</project>
