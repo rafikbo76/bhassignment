@@ -242,6 +242,7 @@
 <!-- AdminLTE App -->
 <script src="./dist/js/adminlte.min.js"></script>
 <!-- Page specific script -->
+<script src="./plugins/moment/moment.min.js"></script>
 
 
 <script>
@@ -273,7 +274,16 @@
             {"data": "address"},
             {"data": "customerEmail"},
             {"data": "customerPhone"},
-            {"data": "registrationDate"},
+            {"data": "registrationDate",
+            	'render': function (registrationDate) {
+	                if (registrationDate) {
+	                    var date = new Date(registrationDate);
+	
+	                    return moment(date).format('D/M/YYYY H:m:s');
+	                }
+	                else return '';
+            	}
+            },
             {
               "data": "customerId",
               'render': function (customerId, type, full, meta) {
